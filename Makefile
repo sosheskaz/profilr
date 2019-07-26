@@ -5,8 +5,8 @@ GOENV=CGO_ENABLED=0
 # Strip out debug info
 DISTFLAGS=-ldflags="-s -w"
 
-GOBUILDDIST=go build ${DISTFLAGS}
-GOBUILD=go build
+GOBUILDDIST=${GOENV} go build ${DISTFLAGS}
+GOBUILD=${GOENV} go build
 
 # Basic Commands
 clean:
