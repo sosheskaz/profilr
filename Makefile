@@ -1,4 +1,4 @@
-VERSION=1.0.1
+VERSION=1.0.2
 
 # CGO has problems for me.
 GOENV=CGO_ENABLED=0
