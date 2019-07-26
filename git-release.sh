@@ -32,7 +32,7 @@ for osdir in dist/* ; do
   for archdir in $osdir/* ; do
     arch=$(basename $archdir)
     xz -zc $archdir/profilr > "profilr-$os-$arch.xz"
-    curl --data-binary "@profilr-$os-$arch.xz" -XPOST "https://api.github.com/repos/$repo_full_name/releases/$release_id/assets?name=profilr-$os-$arch.xz"
+    curl --data-binary "@profilr-$os-$arch.xz" -H "Authorization: token $token" -H "Content-Type: application/octet-stream" "https://uploads.github.com/repos/$repo_full_name/releases/$release_id/assets?name=profilr-$os-$arch.xz"
   done
 done
 

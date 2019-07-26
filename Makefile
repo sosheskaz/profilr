@@ -21,6 +21,8 @@ build:
 
 # Publish Commands
 
+publish: docker-push github-release
+
 docker-image: clean build-linux-amd64
 	docker build -t ericmiller/profilr:${VERSION}-scratch -f docker/scratch/Dockerfile .
 	docker build -t ericmiller/profilr:${VERSION}-alpine -f docker/alpine/Dockerfile .
@@ -28,6 +30,9 @@ docker-image: clean build-linux-amd64
 docker-push: test docker-image
 	docker push ericmiller/profilr:${VERSION}-scratch
 	docker push ericmiller/profilr:${VERSION}-alpine
+
+github-release: clean test build-all
+	./git-release.sh
 
 # Dist Commands
 
