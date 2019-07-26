@@ -57,7 +57,7 @@ build-bsd: \
 	build-dragonfly-amd64
 
 build-macos:
-	GOOS=darwin GOARCH=amd64 ${GOBUILDDIST} -o dist/darwin/amd64/profilr
+	GOOS=darwin GOARCH=amd64 ${GOBUILDDIST} -o dist/macos/amd64/profilr
 
 build-solaris:
 	GOOS=solaris GOARCH=amd64 ${GOBUILDDIST} -o dist/solaris/amd64/profilr
