@@ -1,5 +1,5 @@
-FROM alpine:3.9
+FROM alpine:3.10
 
-ADD bin/profilr /bin/profilr
+ADD dist/linux/amd64/profilr /bin/profilr
 
 ENTRYPOINT [ "profilr" ]

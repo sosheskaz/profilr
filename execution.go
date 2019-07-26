@@ -9,23 +9,23 @@ import (
 
 type ExecResult struct {
 	ClockTime              float64
-	UserTimeNano           int64
-	SystemTimeNano         int64
-	CPUTimeNano            int64
-	MaxRSS                 int64
-	IXRSS                  int64
-	IDRSS                  int64
-	ISRSS                  int64
-	SoftPageFaults         int64
-	HardPageFaults         int64
-	Swaps                  int64
-	InBlock                int64
-	OutBlock               int64
-	MsgSent                int64
-	MsgReceived            int64
-	SignalsReceived        int64
-	VoluntaryCtxSwitches   int64
-	InvoluntaryCtxSwitches int64
+	UserTimeNano           int
+	SystemTimeNano         int
+	CPUTimeNano            int
+	MaxRSS                 int
+	IXRSS                  int
+	IDRSS                  int
+	ISRSS                  int
+	SoftPageFaults         int
+	HardPageFaults         int
+	Swaps                  int
+	InBlock                int
+	OutBlock               int
+	MsgSent                int
+	MsgReceived            int
+	SignalsReceived        int
+	VoluntaryCtxSwitches   int
+	InvoluntaryCtxSwitches int
 }
 
 type ExecResultSet struct {
@@ -52,22 +52,22 @@ func (ex *Execution) ProfileRun() (*ExecResult, error) {
 
 	result := &ExecResult{
 		ClockTime:              delta,
-		UserTimeNano:           usage.Utime.Nano(),
-		SystemTimeNano:         usage.Stime.Nano(),
-		MaxRSS:                 usage.Maxrss,
-		IXRSS:                  usage.Ixrss,
-		IDRSS:                  usage.Idrss,
-		ISRSS:                  usage.Isrss,
-		SoftPageFaults:         usage.Minflt,
-		HardPageFaults:         usage.Majflt,
-		Swaps:                  usage.Nswap,
-		InBlock:                usage.Inblock,
-		OutBlock:               usage.Oublock,
-		MsgSent:                usage.Msgsnd,
-		MsgReceived:            usage.Msgrcv,
-		SignalsReceived:        usage.Nsignals,
-		VoluntaryCtxSwitches:   usage.Nvcsw,
-		InvoluntaryCtxSwitches: usage.Nivcsw,
+		UserTimeNano:           int(usage.Utime.Nano()),
+		SystemTimeNano:         int(usage.Stime.Nano()),
+		MaxRSS:                 int(usage.Maxrss),
+		IXRSS:                  int(usage.Ixrss),
+		IDRSS:                  int(usage.Idrss),
+		ISRSS:                  int(usage.Isrss),
+		SoftPageFaults:         int(usage.Minflt),
+		HardPageFaults:         int(usage.Majflt),
+		Swaps:                  int(usage.Nswap),
+		InBlock:                int(usage.Inblock),
+		OutBlock:               int(usage.Oublock),
+		MsgSent:                int(usage.Msgsnd),
+		MsgReceived:            int(usage.Msgrcv),
+		SignalsReceived:        int(usage.Nsignals),
+		VoluntaryCtxSwitches:   int(usage.Nvcsw),
+		InvoluntaryCtxSwitches: int(usage.Nivcsw),
 	}
 
 	return result, nil

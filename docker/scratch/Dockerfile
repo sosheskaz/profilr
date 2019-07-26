@@ -1,5 +1,5 @@
 FROM scratch
 
-ADD bin/profilr /profilr
+ADD dist/linux/amd64/profilr /profilr
 
 ENTRYPOINT [ "/profilr" ]
