@@ -23,6 +23,8 @@ EOF
 echo "Create release $version for repo: $repo_full_name branch: $branch"
 curl --data "$(generate_post_data)" "https://api.github.com/repos/$repo_full_name/releases?access_token=$token" || true
 
+sleep 30
+
 release_info=$(curl "https://api.github.com/repos/$repo_full_name/releases/tags/$version?access_token=$token")
 
 release_id=$(echo "$release_info" | jq -r .id)

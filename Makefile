@@ -28,11 +28,19 @@ docker-image: clean build-linux-amd64
 	docker build -t ericmiller/profilr:${VERSION}-alpine -f docker/alpine/Dockerfile .
 
 docker-push: test docker-image
+	docker tag ericmiller/profilr:${VERSION}-alpine ericmiller/profilr:${VERSION}
+	docker tag ericmiller/profilr:${VERSION}-scratch ericmiller/profilr:latest-scratch
+	docker tag ericmiller/profilr:${VERSION}-alpine ericmiller/profilr:latest-alpine
+	docker tag ericmiller/profilr:latest-alpine ericmiller/profilr:latest
 	docker push ericmiller/profilr:${VERSION}-scratch
 	docker push ericmiller/profilr:${VERSION}-alpine
+	docker push ericmiller/profilr:${VERSION}
+	docker push ericmiller/profilr:latest-scratch
+	docker push ericmiller/profilr:latest-alpine
+	docker push ericmiller/profilr:latest
 
 github-release: clean test build-all
-	./git-release.sh
+	./git-release.sh v${VERSION}
 
 # Dist Commands
 
